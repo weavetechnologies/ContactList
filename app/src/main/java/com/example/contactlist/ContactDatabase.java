@@ -9,7 +9,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = ContactModel.class, version = 1)
+@Database(entities = Contact.class, version = 1)
 public abstract class ContactDatabase extends RoomDatabase {
 
     private static ContactDatabase instance;
@@ -31,7 +31,7 @@ public abstract class ContactDatabase extends RoomDatabase {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
-            new PopulateDbAsyncTask(instance).execute();
+          //  new PopulateDbAsyncTask(instance).execute();
         }
     };
 
@@ -45,17 +45,26 @@ public abstract class ContactDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            contactDao.insert(new ContactModel("", "Karan", false));
-            contactDao.insert(new ContactModel("", "Arjun", false));
-            contactDao.insert(new ContactModel("", "Bunny", false));
-            contactDao.insert(new ContactModel("", "Bakul", false));
-            contactDao.insert(new ContactModel("", "Kirti", false));
-            contactDao.insert(new ContactModel("", "Ajay", false));
-            contactDao.insert(new ContactModel("", "Zen", false));
-            contactDao.insert(new ContactModel("", "Barry", false));
-            contactDao.insert(new ContactModel("", "Harish", false));
-            contactDao.insert(new ContactModel("", "Kamlesh", false));
-            contactDao.insert(new ContactModel("", "Sumona", false));
+            contactDao.insert(new Contact("", "Karan", false));
+            contactDao.insert(new Contact("", "Arjun", false));
+            contactDao.insert(new Contact("", "Bunny", false));
+            contactDao.insert(new Contact("", "Bakul", false));
+            contactDao.insert(new Contact("", "Kirti", false));
+            contactDao.insert(new Contact("", "Ajay", false));
+            contactDao.insert(new Contact("", "Ajay34", false));
+            contactDao.insert(new Contact("", "Ajay789", false));
+            contactDao.insert(new Contact("", "Zen", false));
+            contactDao.insert(new Contact("", "Barry", false));
+            contactDao.insert(new Contact("", "Harish", false));
+            contactDao.insert(new Contact("", "Harish", false));
+            contactDao.insert(new Contact("", "Harish23", false));
+            contactDao.insert(new Contact("", "Harish65", false));
+            contactDao.insert(new Contact("", "Harish76", false));
+            contactDao.insert(new Contact("", "Kamlesh", false));
+            contactDao.insert(new Contact("", "Sumona", false));
+            contactDao.insert(new Contact("", "Sumona23", false));
+            contactDao.insert(new Contact("", "Sumona34", false));
+            contactDao.insert(new Contact("", "Sumona546", false));
             return null;
         }
     }

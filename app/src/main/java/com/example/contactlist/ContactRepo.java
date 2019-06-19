@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ContactRepo {
     private ContactDao contactDao;
-    private LiveData<List<ContactModel>> contacts;
+    private LiveData<List<Contact>> contacts;
 
     public ContactRepo(Application application) {
         ContactDatabase database = ContactDatabase.getInstance(application);
@@ -17,17 +17,17 @@ public class ContactRepo {
         contacts = contactDao.getAllContacts();
     }
 
-    public void insert(ContactModel contact) {
+    public void insert(Contact contact) {
         new InsertContactAsyncTask(contactDao).execute(contact);
     }
 
 
-    public void update(ContactModel contact) {
+    public void update(Contact contact) {
         new UpdateContactAsyncTask(contactDao).execute(contact);
     }
 
 
-    public void delete(ContactModel contact) {
+    public void delete(Contact contact) {
         new DeleteContactAsyncTask(contactDao).execute(contact);
 
     }
@@ -39,11 +39,11 @@ public class ContactRepo {
     }
 
 
-    public LiveData<List<ContactModel>> getAllContacts() {
+    public LiveData<List<Contact>> getAllContacts() {
         return contacts;
     }
 
-    private static class InsertContactAsyncTask extends AsyncTask<ContactModel, Void, Void> {
+    private static class InsertContactAsyncTask extends AsyncTask<Contact, Void, Void> {
         private ContactDao contactDao;
 
         private InsertContactAsyncTask(ContactDao contactDao) {
@@ -51,14 +51,14 @@ public class ContactRepo {
         }
 
         @Override
-        protected Void doInBackground(ContactModel... contactModels) {
-            contactDao.insert(contactModels[0]);
+        protected Void doInBackground(Contact... contacts) {
+            contactDao.insert(contacts[0]);
             return null;
         }
     }
 
 
-    private static class UpdateContactAsyncTask extends AsyncTask<ContactModel, Void, Void> {
+    private static class UpdateContactAsyncTask extends AsyncTask<Contact, Void, Void> {
         private ContactDao contactDao;
 
         private UpdateContactAsyncTask(ContactDao contactDao) {
@@ -66,13 +66,13 @@ public class ContactRepo {
         }
 
         @Override
-        protected Void doInBackground(ContactModel... contactModels) {
-            contactDao.update(contactModels[0]);
+        protected Void doInBackground(Contact... contacts) {
+            contactDao.update(contacts[0]);
             return null;
         }
     }
 
-    private static class DeleteContactAsyncTask extends AsyncTask<ContactModel, Void, Void> {
+    private static class DeleteContactAsyncTask extends AsyncTask<Contact, Void, Void> {
         private ContactDao contactDao;
 
         private DeleteContactAsyncTask(ContactDao contactDao) {
@@ -80,8 +80,8 @@ public class ContactRepo {
         }
 
         @Override
-        protected Void doInBackground(ContactModel... contactModels) {
-            contactDao.delete(contactModels[0]);
+        protected Void doInBackground(Contact... contacts) {
+            contactDao.delete(contacts[0]);
             return null;
         }
     }

@@ -13,17 +13,17 @@ import java.util.List;
 public interface ContactDao {
 
     @Insert
-    void insert(ContactModel contact);
+    void insert(Contact contact);
 
     @Update
-    void update(ContactModel contact);
+    void update(Contact contact);
 
     @Delete
-    void delete(ContactModel contact);
+    void delete(Contact contact);
 
     @Query("DELETE FROM contact_table")
     void deleteAllContacts();
 
     @Query("SELECT * FROM contact_table ORDER BY name ASC ")
-    LiveData<List<ContactModel>> getAllContacts();
+    LiveData<List<Contact>> getAllContacts();
 }

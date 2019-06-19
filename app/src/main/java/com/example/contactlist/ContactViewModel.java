@@ -11,7 +11,7 @@ import java.util.List;
 public class ContactViewModel extends AndroidViewModel {
 
     private ContactRepo repository;
-    private LiveData<List<ContactModel>> allContacts;
+    private LiveData<List<Contact>> allContacts;
 
     public ContactViewModel(@NonNull Application application) {
         super(application);
@@ -19,15 +19,15 @@ public class ContactViewModel extends AndroidViewModel {
         allContacts = repository.getAllContacts();
     }
 
-    public void insert(ContactModel contact) {
+    public void insert(Contact contact) {
         repository.insert(contact);
     }
 
-    public void update(ContactModel contact) {
+    public void update(Contact contact) {
         repository.update(contact);
     }
 
-    public void delete(ContactModel contact) {
+    public void delete(Contact contact) {
         repository.delete(contact);
     }
 
@@ -35,7 +35,7 @@ public class ContactViewModel extends AndroidViewModel {
         repository.deleteAllContacts();
     }
 
-    public LiveData<List<ContactModel>> getAllContacts() {
+    public LiveData<List<Contact>> getAllContacts() {
         return allContacts;
     }
 }
